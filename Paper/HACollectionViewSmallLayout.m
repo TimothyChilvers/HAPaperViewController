@@ -15,7 +15,9 @@
     if (!(self = [super init])) return nil;
     
     self.itemSize = CGSizeMake(142, 254);
-    self.sectionInset = UIEdgeInsetsMake((iPhone5 ? 314 : 224), 2, 0, 2);
+    
+    BOOL isIPhone5 = ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO);
+    self.sectionInset = UIEdgeInsetsMake((isIPhone5 ? 314 : 224), 2, 0, 2);
     self.minimumInteritemSpacing = 10.0f;
     self.minimumLineSpacing = 2.0f;
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
